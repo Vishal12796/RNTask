@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "68995879493",
+    "project_id": "rntask-c6144",
+    "storage_bucket": "rntask-c6144.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:68995879493:android:286f4dcd268c69d5acc92c",
+        "android_client_info": {
+          "package_name": "com.rntask"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "68995879493-hu8cv2lajis2o5qlr6m19jt63m8l9tn0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSw6Bea4eA_BiqYgcyTUXAlp9O3jGOoSU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "68995879493-hu8cv2lajis2o5qlr6m19jt63m8l9tn0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
