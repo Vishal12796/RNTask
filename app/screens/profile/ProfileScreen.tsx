@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {LegacyRef, useEffect, useRef, useState} from 'react';
 import {Platform, Text, View} from 'react-native';
 import Geolocation from 'react-native-geolocation-service';
 import {
@@ -17,11 +17,17 @@ import {RootState, useAppDispatch, useAppSelector} from '../../redux/store';
 import {UserDetails} from '../../types/type';
 import {strings} from '../../utils/string';
 import {styles} from './Styles';
+import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
 
 export const ProfileScreen: React.FC = () => {
   const userData = useAppSelector((state: RootState) => state.auth.userData);
   const dispatch = useAppDispatch();
+  const map: LegacyRef<MapView> = useRef(null);
   const [user, setUser] = useState<UserDetails>(userData);
+  const [location, setLocation] = useState<{
+    latitude: number;
+    longitude: number;
+  }>();
 
   useEffect(() => {
     locationPer();
@@ -82,6 +88,18 @@ export const ProfileScreen: React.FC = () => {
           'Location : ',
           `LAT:${currentLatitude} LONG:${currentLongitude}`,
         );
+        setLocation({
+          latitude: parseFloat(currentLatitude),
+          longitude: parseFloat(currentLongitude),
+        });
+        try {
+          map?.current.animateToRegion({
+            latitude: parseFloat(currentLatitude),
+            longitude: parseFloat(currentLongitude),
+            latitudeDelta: 0.005,
+            longitudeDelta: 0.005,
+          });
+        } catch (e) {}
       },
       err => console.log('Error', err),
       {
@@ -93,6 +111,23 @@ export const ProfileScreen: React.FC = () => {
 
   return (
     <View style={styles.root}>
+      <View style={styles.viewMap}>
+        <MapView
+          provider={PROVIDER_GOOGLE} // remove if not using Google Maps
+          style={styles.map}
+          ref={map}
+          showsUserLocation={true}>
+          {location ? (
+            <Marker
+              coordinate={location}
+              title={strings.currentLocation}
+              description={strings.currentLocationDesc}
+            />
+          ) : (
+            <></>
+          )}
+        </MapView>
+      </View>
       <Text style={styles.labelText}>{strings.firstName}</Text>
       <Text style={styles.dataText}>{user?.first_name}</Text>
 

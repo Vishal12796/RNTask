@@ -16,6 +16,7 @@ export const styles = StyleSheet.create({
     marginBottom: 8,
     flex: 1,
     marginStart: 10,
+    color: Colors.black,
   },
   countryCodeView: {
     backgroundColor: Colors.pink,

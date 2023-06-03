@@ -17,14 +17,15 @@ export const strings = {
   lastName: 'Last name',
   email: 'Email',
   mobileNumber: 'Mobile number',
-
   enterFirstName: 'Enter first name',
   enterLastName: 'Enter last name',
   enterEmail: 'Enter email',
   update: 'Update',
-
+  currentLocation: 'Current Location',
+  currentLocationDesc: 'Testing Location',
   pleaseEnterFirstName: 'Please enter first name',
   pleaseEnterLastName: 'Please enter last name',
   pleaseEnterEmail: 'Please enter email',
   pleaseEnterValidEmail: 'Please enter valid email',
+  dataUpdated: 'Data updated successfully',
 };

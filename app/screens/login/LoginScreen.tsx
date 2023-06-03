@@ -65,7 +65,7 @@ export const LoginScreen: React.FC = () => {
         placeholder={strings.enterOTP}
         maxLength={4}
         placeholderColor={Colors.black}
-        style={styles.mobNumStyles}
+        style={styles.otpStyles}
         keyboardType="number-pad"
       />
       <Button text={strings.login} onPress={onLoginPress} loading={loader} />

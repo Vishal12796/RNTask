@@ -12,6 +12,7 @@ import {validatePhoneNumber} from '../../utils/helper';
 import {strings} from '../../utils/string';
 import {styles} from './Styles';
 import {screenName} from '../../navigation/screenNames';
+import {API_CODE} from '../../api/apiConst';
 
 export const OTPScreen: React.FC = () => {
   const navigation = useNavigation();
@@ -47,11 +48,15 @@ export const OTPScreen: React.FC = () => {
         .then(unwrapResult)
         .then(data => {
           setLoader(false);
-          navigation.navigate(screenName.LOGIN_SCREEN, {
-            mobNumber,
-            countryCode: countryCode.num,
-            otp: data?.data?.otp,
-          });
+          if (data?.status === API_CODE.SUCCESS) {
+            navigation.navigate(screenName.LOGIN_SCREEN, {
+              mobNumber,
+              countryCode: countryCode.num,
+              otp: data?.data?.otp,
+            });
+          } else {
+            Alert.alert(data?.message);
+          }
         })
         .catch(_e => {
           setLoader(false);

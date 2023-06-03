@@ -23,5 +23,13 @@ export const styles = StyleSheet.create({
     height: 50,
     paddingHorizontal: 10,
     marginBottom: 8,
+    color: Colors.black,
   },
+  viewMap: {
+    width: '100%',
+    height: '30%',
+    borderRadius: 10,
+    overflow: 'hidden',
+  },
+  map: {width: '100%', height: '100%'},
 });

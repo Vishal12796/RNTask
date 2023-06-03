@@ -2,19 +2,14 @@ import React, {useEffect, useState} from 'react';
 import {Alert, Text, View} from 'react-native';
 import {Button} from '../../../components/Button';
 import {InputText} from '../../../components/InputText';
-import {
-  findUserData,
-  readUserData,
-  removeUserReadListener,
-  updateUserData,
-} from '../../../firebase/firebaseHelper';
+import {findUserData, updateUserData} from '../../../firebase/firebaseHelper';
+import {updateReduxUserData} from '../../../redux/reducerSlice/auth';
 import {RootState, useAppDispatch, useAppSelector} from '../../../redux/store';
 import {UserDetails} from '../../../types/type';
 import {Colors} from '../../../utils/colors';
 import {emailRegex, validatePhoneNumber} from '../../../utils/helper';
 import {strings} from '../../../utils/string';
 import {styles} from '../Styles';
-import {updateReduxUserData} from '../../../redux/reducerSlice/auth';
 
 export const EditProfileScreen: React.FC = () => {
   const userData = useAppSelector((state: RootState) => state.auth.userData);
@@ -53,6 +48,7 @@ export const EditProfileScreen: React.FC = () => {
       Alert.alert(strings.validMobile);
     } else {
       updateData();
+      Alert.alert(strings.dataUpdated);
     }
   };
 

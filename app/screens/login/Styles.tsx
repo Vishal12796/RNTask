@@ -7,11 +7,12 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingTop: 10,
   },
-  mobNumStyles: {
+  otpStyles: {
     backgroundColor: Colors.pink,
     borderRadius: 12,
     height: 50,
     paddingHorizontal: 10,
     marginBottom: 8,
+    color: Colors.black,
   },
 });

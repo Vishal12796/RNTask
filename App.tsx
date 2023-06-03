@@ -5,7 +5,9 @@ import {PersistGate} from 'redux-persist/integration/react';
 import {NetworkConnectivityModal} from './app/components/NetworkConnectivityModal';
 import {RootStack} from './app/navigation/RootStack';
 import {persister, store} from './app/redux/store';
+import {enableLatestRenderer} from 'react-native-maps';
 
+enableLatestRenderer();
 LogBox.ignoreAllLogs(true);
 
 function App(): JSX.Element {
