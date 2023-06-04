@@ -35,14 +35,17 @@ export const HeaderView: React.FC = () => {
       resizeMethod="resize"
       resizeMode="cover">
       <View style={styles.container}>
-        <TouchableOpacity onPress={drawerClick} activeOpacity={0.8}>
+        <TouchableOpacity
+          onPress={drawerClick}
+          activeOpacity={0.8}
+          style={styles.imgClick}>
           <Image source={AppIcons.menu} style={styles.menuImg} />
         </TouchableOpacity>
         <View style={styles.infoContainer}>
           <Text style={styles.lgText}>
             {`${strings.welcome}, ${user?.first_name}`}
           </Text>
-          <Text style={styles.smText}>{user.type}</Text>
+          <Text style={styles.smText}>{user?.type}</Text>
         </View>
       </View>
     </ImageBackground>
@@ -57,6 +60,10 @@ const styles = StyleSheet.create({
 
   container: {
     paddingHorizontal: 6,
+  },
+  imgClick: {
+    height: 40,
+    width: 40,
   },
   menuImg: {
     height: 40,

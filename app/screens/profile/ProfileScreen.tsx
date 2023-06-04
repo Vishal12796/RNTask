@@ -32,12 +32,14 @@ export const ProfileScreen: React.FC = () => {
   useEffect(() => {
     locationPer();
 
-    readUserData(userData?.user_id, firebaseData => {
-      if (firebaseData) {
-        setUser(firebaseData);
-        dispatch(updateReduxUserData({...firebaseData}));
-      }
-    });
+    if (userData?.user_id) {
+      readUserData(userData?.user_id, firebaseData => {
+        if (firebaseData) {
+          setUser(firebaseData);
+          dispatch(updateReduxUserData({...firebaseData}));
+        }
+      });
+    }
 
     return () => {
       removeUserReadListener(userData?.user_id);
@@ -82,17 +84,18 @@ export const ProfileScreen: React.FC = () => {
   const getOneTimeLocation = () => {
     Geolocation.getCurrentPosition(
       position => {
-        const currentLongitude = position?.coords?.longitude?.toFixed(6) || 0.0;
-        const currentLatitude = position?.coords?.latitude?.toFixed(6) || 0.0;
-        console.log(
-          'Location : ',
-          `LAT:${currentLatitude} LONG:${currentLongitude}`,
-        );
-        setLocation({
-          latitude: parseFloat(currentLatitude),
-          longitude: parseFloat(currentLongitude),
-        });
         try {
+          const currentLongitude =
+            position?.coords?.longitude?.toFixed(6) || 0.0;
+          const currentLatitude = position?.coords?.latitude?.toFixed(6) || 0.0;
+          console.log(
+            'Location : ',
+            `LAT:${currentLatitude} LONG:${currentLongitude}`,
+          );
+          setLocation({
+            latitude: parseFloat(currentLatitude),
+            longitude: parseFloat(currentLongitude),
+          });
           map?.current.animateToRegion({
             latitude: parseFloat(currentLatitude),
             longitude: parseFloat(currentLongitude),

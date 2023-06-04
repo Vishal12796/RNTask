@@ -4,5 +4,7 @@ export const Colors = {
   blue: 'blue',
   pink: 'pink',
   grey: 'grey',
+  lightGrey: '#c9c7c7',
   dialogBg: 'rgba(0,0,0,0.5)',
+  separator: '#808080',
 };

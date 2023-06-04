@@ -23,3 +23,19 @@ export interface UserDetails {
   user_id: number;
   key?: string;
 }
+
+export interface ListMain {
+  id: number;
+  isExpanded: boolean;
+  catTitle: string;
+  catSub: string;
+  image: string;
+  subcategory: ListSubData[];
+}
+
+export interface ListSubData {
+  id: number;
+  title: string;
+  desc: string;
+  image: string;
+}

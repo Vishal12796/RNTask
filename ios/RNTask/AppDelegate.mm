@@ -7,7 +7,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  [GMSServices provideAPIKey:@AIzaSyDqeSIOlnsGZpX7T_o-mnkQC4Vf9FKawSg]; 
+  [GMSServices provideAPIKey:@"AIzaSyDqeSIOlnsGZpX7T_o-mnkQC4Vf9FKawSg"]; 
   [FIRApp configure];
   self.moduleName = @"RNTask";
   // You can add your custom initial props in the dictionary below.

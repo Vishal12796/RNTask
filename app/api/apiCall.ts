@@ -2,7 +2,6 @@ import {createAsyncThunk} from '@reduxjs/toolkit';
 import {AxiosParams, useAxios} from './useAxios';
 import {API_TYPE, ENDPOINTS} from './apiConst';
 import {RequestLoginParams, RequestOTP} from '../types/type';
-import {Platform} from 'react-native';
 
 export const generateOTP = createAsyncThunk(
   'generateOTP',

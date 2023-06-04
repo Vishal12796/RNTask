@@ -29,10 +29,14 @@ export const findUserData = async (
 };
 
 const extractKey = (data: any) => {
-  const keys = Object.keys(data);
-  if (keys.length > 0) {
-    const fbKey = keys[0];
-    return {...data[fbKey], key: fbKey};
+  if (data) {
+    const keys = Object.keys(data);
+    if (keys.length > 0) {
+      const fbKey = keys[0];
+      return {...data[fbKey], key: fbKey};
+    } else {
+      return null;
+    }
   } else {
     return null;
   }

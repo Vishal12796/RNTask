@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Alert, Text, View} from 'react-native';
+import {Alert, Keyboard, Text, View} from 'react-native';
 import {Button} from '../../../components/Button';
 import {InputText} from '../../../components/InputText';
 import {findUserData, updateUserData} from '../../../firebase/firebaseHelper';
@@ -10,26 +10,29 @@ import {Colors} from '../../../utils/colors';
 import {emailRegex, validatePhoneNumber} from '../../../utils/helper';
 import {strings} from '../../../utils/string';
 import {styles} from '../Styles';
+import {useIsFocused} from '@react-navigation/native';
 
 export const EditProfileScreen: React.FC = () => {
   const userData = useAppSelector((state: RootState) => state.auth.userData);
   const dispatch = useAppDispatch();
+  const isFocused = useIsFocused();
   const [user, setUser] = useState<UserDetails>(userData);
 
   useEffect(() => {
-    findUserData(userData?.user_id, firebaseData => {
+    findUserData(userData, firebaseData => {
       if (firebaseData) {
         setUser(firebaseData);
       }
     });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [isFocused]);
 
   const updateData = () => {
     if (user?.key) {
       updateUserData(user?.key, {...user});
       dispatch(updateReduxUserData({...user}));
+      Keyboard.dismiss();
     }
   };
 
@@ -89,13 +92,14 @@ export const EditProfileScreen: React.FC = () => {
 
       <Text style={styles.labelText}>{strings.mobileNumber}</Text>
       <InputText
-        value={user?.contact_number}
+        value={`${user?.contact_number}`}
         onChangeText={text => {
           // eslint-disable-next-line radix
           setUser({...user, contact_number: text});
         }}
         placeholder={strings.enterMobileNumber}
         placeholderColor={Colors.black}
+        maxLength={10}
         style={styles.inputStyle}
         keyboardType="number-pad"
       />

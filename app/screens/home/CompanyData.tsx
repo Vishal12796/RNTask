@@ -10,6 +10,7 @@ import {removeHomeData} from '../../redux/reducerSlice/home';
 import {useAppDispatch} from '../../redux/store';
 import {Colors} from '../../utils/colors';
 import {strings} from '../../utils/string';
+import {List} from './List';
 
 export const CompanyData: React.FC = () => {
   const navigation = useNavigation();
@@ -43,17 +44,8 @@ export const CompanyData: React.FC = () => {
       <Text style={styles.companyName}>ABC Company Ltd</Text>
       <Text style={styles.companyDesc}>The Hearist Tower</Text>
 
+      <List />
       <View style={styles.buttonContainer}>
-        <Button
-          text={strings.profile}
-          onPress={() => {
-            navigation.navigate(screenName.PROFILE_SCREEN);
-          }}
-        />
-        <Button
-          text={strings.editProfile}
-          onPress={() => navigation.navigate(screenName.EDIT_PROFILE_SCREEN)}
-        />
         <Button text={strings.logout} onPress={onLogoutPress} />
       </View>
     </View>
