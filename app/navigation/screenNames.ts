@@ -8,3 +8,11 @@ export const screenName = {
   PROFILE_SCREEN: 'PROFILE_SCREEN',
   EDIT_PROFILE_SCREEN: 'EDIT_PROFILE_SCREEN',
 };
+
+export type RootStackParamList = {
+  OTP_SCREEN: undefined;
+  LOGIN_SCREEN: undefined;
+  HOME_SCREEN: undefined;
+  PROFILE_SCREEN: undefined;
+  EDIT_PROFILE_SCREEN: undefined;
+};
